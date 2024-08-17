@@ -10,11 +10,11 @@ static long open(const char *filename, long flags, long mode)
 {
 	long fd = 0;
 	asm("movq $5,%%rax		\n\t"
-		"movq %1,%%rbx	\n\t"
-		"movq %2,%%rcx \n\t"
-		"movq %3,%%rdx \n\t"
-		"int $0x80  \n\t"
-		"movq %%rax,%0 \n\t" : "=m"(fd) : "m"(filename), "m"(flags), "m"(mode));
+		"movq %1,%%rbx		\n\t"
+		"movq %2,%%rcx 		\n\t"
+		"movq %3,%%rdx 		\n\t"
+		"int $0x80  		\n\t"
+		"movq %%rax,%0 		\n\t" : "=m"(fd) : "m"(filename), "m"(flags), "m"(mode));
 
 	return fd;
 }
